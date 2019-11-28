@@ -211,3 +211,63 @@ SELECT empno, ename, job, sal,
        DECODE(job, 'SALESMAN', sal*1.05, 'MANAGER', sal*1.10, 'PRESIDENT', sal*1.20, sal) bonus
             --job이 'SALESMAN'이면 sal * 1.05 'MANAGER'이면 sal*1.10 'PRESIDENT'이면 sal*120 그렇지않으면 sal
 FROM emp;
+
+
+SELECT empno, ename,
+        CASE
+            WHEN deptno = 10 THEN 'ACCOUNTING'
+            WHEN deptno = 20 THEN 'RESEARCH'
+            WHEN deptno = 30 THEN 'SALES'
+            WHEN deptno = 40 THEN 'OPERATIONS'
+            ELSE 'DDIT'        
+        END dname
+FROM emp;
+
+SELECT empno, ename,
+        DECODE(deptno, 10, 'ACCOUNTING',
+                       20, 'RESEARCH',
+                       30, 'SLAES',
+                       40, 'OPERATION',
+                           'DDIT') dname
+FROM emp;
+
+--건강검진 대상자 조회 쿼리
+-- SELECT MOD(TO_CHAR(SYSDATE, 'YYYY'),2) 올해년도 구분 (0:짝수년, 1:홀수년)
+SELECT empno, ename, hiredate,
+        CASE
+            WHEN MOD(TO_CHAR(hiredate, 'yyyy'),2) = 
+                 MOD(TO_CHAR(SYSDATE, 'yyyy'), 2)
+            THEN '건강검진대상자'
+            ELSE '건강검진비대상자'
+        END contact_to_doctor
+
+FROM emp;
+
+--내년도 건강검진 대상자를 조회하는 쿼리 작성
+SELECT empno, ename, hiredate,
+            CASE
+                WHEN MOD(TO_CHAR(hiredate, 'yyyy'), 2) =
+                     MOD(TO_CHAR(SYSDATE, 'yyyy')+1, 2)
+                THEN '건강검진 대상자'
+                ELSE '건강검진 비대상자'
+                
+            END 
+FROM emp;
+
+
+SELECT userid, usernm, alias, reg_dt,
+        CASE
+            WHEN reg_dt IS NULL THEN '건강검진 비대상자'
+            ELSE '건강검진 대상자' 
+        END contacttodoctor
+FROM users;
+
+SELECT empno, ename, deptno
+FROM emp;
+
+SELECT *  --dept 테이블 조회
+FROM dept;
+
+DESC emp; --<- emp테이블의 데이터들의 타입을 확인함.(숫자,문자 등)
+
+

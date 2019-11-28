@@ -204,13 +204,13 @@ SELECT MONTHS_BETWEEN(TO_DATE('2019-11-25', 'yyyy-mm-dd'),
         TO_DATE('2019-11-25', 'yyyy-mm-dd') -  TO_DATE('2019-03-31', 'yyyy-mm-dd') d_m --두 날짜 사이의 일자 수
 FROM dual;
 
---ADD_MONTHS(date, number(+,-) )
+--★★★ADD_MONTHS(date, number(+,-) )★★★
 SELECT ADD_MONTHS (TO_DATE('20191125', 'yyyymmdd'), 5) NOW_AFTER5M,
        ADD_MONTHS (TO_DATE('20191125', 'yyyymmdd'), -5) NOW_BEFORE5M,
        SYSDATE + 100 --100일 뒤의 날짜 (월 개념 3-31, 2-28/29
 FROM dual;
 
 --NEXT_DAY(date, weekday number( 1~7 ))
-SELECT NEXT_DAY(SYSDATE, 1) -- 오늘 날짜(2019/11/25)일 이후 등장하는 첫번째 토요일
+SELECT NEXT_DAY(SYSDATE, 7) -- 오늘 날짜(2019/11/25)일 이후 등장하는 첫번째 토요일
 FROM dual;
-
+--★★★★★
