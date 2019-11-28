@@ -210,6 +210,7 @@ FROM emp;
 SELECT empno, ename, job, sal,
        DECODE(job, 'SALESMAN', sal*1.05, 'MANAGER', sal*1.10, 'PRESIDENT', sal*1.20, sal) bonus
             --job이 'SALESMAN'이면 sal * 1.05 'MANAGER'이면 sal*1.10 'PRESIDENT'이면 sal*120 그렇지않으면 sal
+<<<<<<< HEAD
 FROM emp;
 
 
@@ -271,3 +272,6 @@ FROM dept;
 DESC emp; --<- emp테이블의 데이터들의 타입을 확인함.(숫자,문자 등)
 
 
+=======
+FROM emp;
+>>>>>>> master
