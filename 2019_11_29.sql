@@ -48,7 +48,7 @@ AND cycle.pid = product.pid
 AND cnm IN('brown', 'sally');
 
 --join 실습 6
-SELECT cycle.cid, cnm, product.pid, pnm, SUM(cnt)                      
+SELECT cycle.cid, cnm, product.pid, pnm, SUM(cnt) cnt                
 FROM customer, cycle, product
 WHERE customer.cid = cycle.cid
 AND cycle.pid = product.pid
@@ -59,4 +59,13 @@ SELECT cycle.pid, pnm, SUM(cnt) cnt
 FROM cycle, product
 WHERE cycle.pid = product.pid
 GROUP BY cycle.pid, pnm ;
+
+--SELECT * 
+--FROM DBA_USERS;
+--
+--ALTER USER HR ACCOUNT UNLOCK; --아이디 잠금 해제
+--
+--ALTER USER HR IDENTIFIED BY xxxx; --비밀번호설정
+
+SELECT region_id,
 

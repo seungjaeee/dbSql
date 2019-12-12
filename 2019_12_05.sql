@@ -7,7 +7,7 @@ FROM dept
 WHERE deptno NOT IN (SELECT deptno 
                      FROM emp);
 
---cycel, product 테이블을 이용하여 cid = 1 인 고객이 애음하지 않는 제품을 조회하는 쿼리를 작성
+--cycle, product 테이블을 이용하여 cid = 1 인 고객이 애음하지 않는 제품을 조회하는 쿼리를 작성
 SELECT *
 FROM product
 WHERE pid NOT IN (SELECT pid

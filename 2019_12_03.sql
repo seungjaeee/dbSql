@@ -9,6 +9,29 @@ FROM fastfood;
 -- 2 / 서울특별시 / 강남구 / 7.2
 
 --해당 시도, 시군구별 프렌차이즈별 건수가 필요
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SELECT ROWNUM rn, sido, sigungu, 도시발전지수
 FROM
 (SELECT  a.sido, a.sigungu, ROUND(a.cnt/b.cnt, 1) 도시발전지수

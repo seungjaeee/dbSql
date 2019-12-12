@@ -437,3 +437,7 @@ ALTER TABLE emp_test DROP CONSTRAINT pk_emp_test;
 --테이블의 컬럼 순서를 변경하는 것은 불가능하다
 --empno, ename, job --> empno, job, ename
 
+SELECT *
+FROM emp
+WHERE empno NOT IN(7499,7369,7566,7698,7782,7788,7839,7876,7902,7934);
+

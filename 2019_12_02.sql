@@ -105,15 +105,52 @@ SELECT e.empno, e.ename, m.empno, m.ename
 FROM emp e FULL OUTER JOIN emp m 
             ON (e.mgr = m.empno);
 
+--OUTER JOIN 1
 SELECT a.buy_date, a.buy_prod, prod.prod_id, prod.prod_name, a.buy_qty
 FROM buyprod a, prod
 WHERE a.buy_prod(+) = prod.prod_id
 AND a.buy_date (+) = '20050125';
 
-SELECT TO_CHAR(a.buy_date, 'yyyy/mm/dd') , a.buy_prod, prod.prod_id, prod.prod_name, a.buy_qty
+--OUTER JOIN 2
+SELECT nvl(TO_CHAR(a.buy_date, 'yy/mm/dd'), '05/01/25') , a.buy_prod, prod.prod_id, prod.prod_name, a.buy_qty
 FROM buyprod a, prod
 WHERE a.buy_prod(+) = prod.prod_id
 AND a.buy_date (+) = '20050125';
+
+
+--OUTER JOIN 3
+SELECT nvl(TO_CHAR(a.buy_date, 'yyyy/mm/dd'), '2005/01/25') , a.buy_prod, prod.prod_id, prod.prod_name, nvl(a.buy_qty, 0) 
+FROM buyprod a, prod
+WHERE a.buy_prod(+) = prod.prod_id
+AND a.buy_date (+) = '20050125';
+
+SELECT *
+FROM cycle;
+SELECT *
+FROM product;
+
+--OUTER JOIN 4
+SELECT product.pid, product.pnm, nvl(cycle.cid,0)cid, nvl(cycle.day, 0) day, nvl(cycle.cnt,0) cnt
+FROM cycle, product
+WHERE product.pid = cycle.pid(+)
+AND cycle.cid(+) = '1';
+
+SELECT product.pid, product.pnm, nvl(cycle.cid,0)cid, nvl(cycle.day, 0) day, nvl(cycle.cnt,0) cnt
+FROM cycle RIGHT OUTER JOIN product ON product.pid = cycle.pid
+AND cycle.cid = '1';
+
+--OUTER JOIN 5
+SELECT product.pid, product.pnm, nvl(cycle.cid,1)cid, customer.cnm, nvl(cycle.day, 0) day, nvl(cycle.cnt,0) cnt
+FROM cycle, product, customer
+WHERE product.pid = cycle.pid(+)
+AND cycle.cid(+) = '1'
+AND customer.cnm IN ('brown');
+
+
+
+
+
+
 
 
 
@@ -121,7 +158,8 @@ AND a.buy_date (+) = '20050125';
 
 
 SELECT *
-FROM buyprod;
-
+FROM customer;
+SELECT *
+FROM cycle;
 SELECT * 
-FROM prod;
+FROM product;

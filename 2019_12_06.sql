@@ -97,7 +97,7 @@ FOR UPDATE;
 SELECT *
 FROM dept;
 --다른 트랜잭션에서 수정을 못하기 때문에
---현 트랜잭션에서 해달 ROW는 항상 동일한 결과값으로 조히 할 수 있다.
+--현 트랜잭션에서 해당 ROW는 항상 동일한 결과값으로 조히 할 수 있다.
 SELECT *
 FROM dept;
 --하지만 후행 트랜잭션에서 신규 데이터 입력후
@@ -200,6 +200,7 @@ CREATE TABLE dept_test(
     dname VARCHAR2(14),
     loc VARCHAR2(13));
 
+--INSERT 구문 복사
 INSERT INTO dept_test VALUES(99, 'ddit','datjeon');
 INSERT INTO dept_test VALUES(99, '대덕','대전');
 --오류 보고 -
